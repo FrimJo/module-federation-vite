@@ -1,0 +1,1 @@
+{"root":["./src/expose.ts","./src/main.tsx","./src/mfremotedeclarations.d.ts","./src/routetree.gen.ts","./src/router.ts","./src/vite-env.d.ts","./src/routes/__root.tsx","./src/routes/_layout.lazy.tsx","./src/routes/index.tsx","./src/routes/_layout/$siteidentifier/index.tsx"],"version":"5.6.3"}
