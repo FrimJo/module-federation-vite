@@ -1,7 +1,7 @@
 import { AnyRoute, createRoute, createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 
-const CWInternalRoutes = await import("word/expose").then(
+const WordInternalRoutes = await import("word/expose").then(
   (model) => model.default.internalRoutes,
 );
 
@@ -15,20 +15,20 @@ const AuthenticatedLayoutRoute = Array.isArray(routeTree.children)
 if (AuthenticatedLayoutRoute == null)
   throw new Error(`Route not found: /_authenticated`);
 
-const CWRoute = createRoute({
+const WordRoute = createRoute({
   path: "/word",
   getParentRoute: () => AuthenticatedLayoutRoute,
 }).addChildren(
-  CWInternalRoutes.map((route: AnyRoute) =>
+  WordInternalRoutes.map((route: AnyRoute) =>
     route.update({
-      getParentRoute: () => CWRoute,
+      getParentRoute: () => WordRoute,
     } as any),
   ),
 );
 
 AuthenticatedLayoutRoute.addChildren([
   ...AuthenticatedLayoutRoute.children,
-  CWRoute,
+  WordRoute,
 ]);
 
 const router = createRouter({ routeTree });
